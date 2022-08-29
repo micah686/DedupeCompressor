@@ -60,7 +60,7 @@ namespace DedupeCompressor
                 {
                     var fileBytes = File.ReadAllBytes(filePath);
                     var hash = XXHash.XXH64(fileBytes);
-                    var fileInfoEntry = new FileInfo(filePath, hash, useGzip);
+                    var fileInfoEntry = new FileInfo(filePath.Replace(folder, ""), hash, useGzip);
                     col.Insert(fileInfoEntry);
 
                     if (!currentHashes.Contains(hash))
