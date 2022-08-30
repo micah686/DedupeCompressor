@@ -4,25 +4,23 @@ using System.Text;
 
 namespace DedupeCompressor
 {
-    public class FileInfo
+    public class CompactFileInfo
     {
-        public FileInfo() { }
-        public FileInfo(string filePath, ulong hash, bool useGZip)
+        public CompactFileInfo() { }
+        public CompactFileInfo(string filePath, ulong hash)
         {
             FilePath = filePath;
             Hash = hash;
-            UseGzip = useGZip;
         }
         public int Id { get; set; }
         public string FilePath { get; set; }
         public ulong Hash { get; set; }
-        public readonly bool UseGzip = false;
 
     }
 
     public class ExtractInfo
     {
-        public FileInfo FileInfo { get; set; }
+        public CompactFileInfo FileInfo { get; set; }
         public string ExtractPath { get; set; }
     }
     
@@ -39,7 +37,6 @@ namespace DedupeCompressor
         public int TotalFiles { get; set; }
         public int CurrentFile { get; set; }
         public bool Success { get; set; }
-        public string Message { get; set; }
     }
     
     
